@@ -1,0 +1,6 @@
+#ifndef UNTITLED3_LIBRARY_H
+#define UNTITLED3_LIBRARY_H
+
+void hello();
+
+#endif //UNTITLED3_LIBRARY_H
