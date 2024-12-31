@@ -16,7 +16,6 @@ struct Node {
         height = 1;
     }
 };
-
 // Function to get the height of a node
 int getHeight(Node* node) {
     if (node == nullptr)
