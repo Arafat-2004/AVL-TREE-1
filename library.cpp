@@ -114,6 +114,12 @@ void inorderTraversal(Node* root) {
         inorderTraversal(root->right);
     }
 }
+// Function to print the tree height
+int treeHeight(Node* root) {
+    if (root == nullptr)
+        return 0;
+    return root->height;
+}
 
 int main() {
     Node* root = nullptr;
