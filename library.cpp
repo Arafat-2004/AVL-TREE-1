@@ -131,6 +131,13 @@ bool search(Node* root, int value) {
     else
         return search(root->right, value);
 }
+// Function to find the minimum value node in the tree
+Node* findMin(Node* root) {
+    while (root->left != nullptr)
+        root = root->left;
+    return root;
+}
+
 int main() {
     Node* root = nullptr;
 
