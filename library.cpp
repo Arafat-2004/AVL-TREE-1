@@ -27,7 +27,7 @@ int getHeight(Node* node) {
 int getBalanceFactor(Node* node) {
     if (node == nullptr)
         return 0;
-    return getHeight(node->left) - getHeight(node->right);
+     return getHeight(node->left) - getHeight(node->right);
 }
 
 // Right rotate subtree rooted at y
