@@ -137,6 +137,39 @@ Node* findMin(Node* root) {
         root = root->left;
     return root;
 }
+// Function to delete a node from the AVL tree
+Node* deleteNode(Node* root, int value) {
+    if (root == nullptr)
+        return root;
+
+    if (value < root->data)
+        root->left = deleteNode(root->left, value);
+    else if (value > root->data)
+        root->right = deleteNode(root->right, value);
+    else {
+        // Node with one or no child
+        if ((root->left == nullptr) || (root->right == nullptr)) {
+            Node* temp = root->left ? root->left : root->right;
+
+            if (temp == nullptr) {
+                temp = root;
+                root = nullptr;
+            } else {
+                *root = *temp;
+            }
+
+            delete temp;
+        } else {
+            // Node with two children: Get the inorder successor (smallest in the right subtree)
+            Node* temp = findMin(root->right);
+
+            // Copy the inorder successor's data to this node
+            root->data = temp->data;
+
+            // Delete the inorder successor
+            root->right = deleteNode(root->right, temp->data);
+        }
+    }
 
 int main() {
     Node* root = nullptr;
