@@ -170,6 +170,40 @@ Node* deleteNode(Node* root, int value) {
             root->right = deleteNode(root->right, temp->data);
         }
     }
+ // If the tree had only one node, return
+    if (root == nullptr)
+        return root;
+
+    // Update the height of the current node
+    root->height = 1 + max(getHeight(root->left), getHeight(root->right));
+
+    // Check the balance factor
+    int balance = getBalanceFactor(root);
+
+    // Balance the tree
+
+    // Left Left Case
+    if (balance > 1 && getBalanceFactor(root->left) >= 0)
+        return rightRotate(root);
+
+    // Left Right Case
+    if (balance > 1 && getBalanceFactor(root->left) < 0) {
+        root->left = leftRotate(root->left);
+        return rightRotate(root);
+    }
+
+    // Right Right Case
+    if (balance < -1 && getBalanceFactor(root->right) <= 0)
+        return leftRotate(root);
+
+    // Right Left Case
+    if (balance < -1 && getBalanceFactor(root->right) > 0) {
+        root->right = rightRotate(root->right);
+        return leftRotate(root);
+    }
+
+    return root;
+}
 
 int main() {
     Node* root = nullptr;
