@@ -221,6 +221,23 @@ int main() {
     cout << "Inorder traversal of the AVL tree: ";
     inorderTraversal(root);
     cout << endl;
+    
+ // Print the height of the AVL tree
+    cout << "Height of the AVL tree: " << treeHeight(root) << endl;
 
+    // Search for a value
+    int searchValue = 15;
+    cout << "Searching for " << searchValue << ": ";
+    cout << (search(root, searchValue) ? "Found" : "Not Found") << endl;
+
+    // Delete a value
+    int deleteValue = 20;
+    cout << "Deleting value " << deleteValue << endl;
+    root = deleteNode(root, deleteValue);
+
+    // Print the inorder traversal after deletion
+    cout << "Inorder traversal after deletion: ";
+    inorderTraversal(root);
+    cout << endl;
     return 0;
 }
