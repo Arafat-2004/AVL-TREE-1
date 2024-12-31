@@ -120,7 +120,17 @@ int treeHeight(Node* root) {
         return 0;
     return root->height;
 }
-
+// Function to search for a value in the AVL tree
+bool search(Node* root, int value) {
+    if (root == nullptr)
+        return false;
+    if (root->data == value)
+        return true;
+    else if (value < root->data)
+        return search(root->left, value);
+    else
+        return search(root->right, value);
+}
 int main() {
     Node* root = nullptr;
 
